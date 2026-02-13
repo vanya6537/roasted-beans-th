@@ -51,10 +51,12 @@
   },
   "Contact": {
     "title": "Contact / Order via Line",
-    "phone": "Tel: 089-8556550 K.Jane",
+    "brand": "Ruem Yen Coffee (ร่มเย็น คอฟฟี่)",
+    "tagline": "Coffee & Agricultural Products Wholesale",
+    "phone": "Tel: 089-8556550 K. เจน",
     "line": "ID Line: jane4079",
     "gmail": "Gmail: jane4079@gmail.com",
-    "address": "Address: Sankamphang Chiangmai."
+    "address": "Address: Sankamphang, Chiang Mai"
   },
   "Wholesale": {
     "title": "Wholesale Coffee – Stable Quality, Stable Profit",

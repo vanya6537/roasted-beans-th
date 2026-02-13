@@ -1,6 +1,11 @@
 export type RoastLevel = "light" | "medium" | "dark";
 export type PackagingColor = "black" | "silver" | "white";
-export type GrindOption = "whole_bean" | "espresso" | "drip" | "mokapot" | "french_press";
+export type GrindOption =
+  | "whole_bean"
+  | "espresso"
+  | "drip"
+  | "mokapot"
+  | "french_press";
 
 export interface PackagingOption {
   sku: string;
@@ -50,8 +55,8 @@ export interface CoffeeProduct {
 export const products: CoffeeProduct[] = [
   {
     id: "thai-arabica-grade-a-catimor-1300m",
-    name: "Thai Arabica Grade A – Catimor (Highland Washed)",
-    brandName: "Ruem Yen Coffee",
+    name: "Roasted Coffee Arabica Thai Grade A ถุงวาล์ว",
+    brandName: "ร่มเย็น คอฟฟี่ (Ruem Yen Coffee)",
     category: "roasted_coffee",
     origin: {
       country: "Thailand",
@@ -102,7 +107,7 @@ export const products: CoffeeProduct[] = [
     ],
     description: {
       en: "High-altitude Thai Arabica grown at 1,300–1,500 meters in Sankamphaeng, Chiang Mai. This Grade A Catimor is processed using the washed method for a clean and balanced cup. Expect smooth honey sweetness, nutty peanut undertones, creamy milk body, and a chocolate finish. Available in light, medium, and dark roast levels to suit espresso, drip, or traditional brewing styles. Roasted in small batches with roast date clearly labeled for freshness.",
-      th: "เมล็ดกาแฟไทยอาราบิก้าคุณภาพเยี่ยม ปลูกบนที่สูง 1,300–1,500 เมตร ในอำเภอสันกำแพง จังหวัดเชียงใหม่ อาราบิก้า คาทิมอร์ เกรด A นี้ผ่านกระบวนการแปรรูปแบบ Washed เพื่อให้ได้รสชาติที่สะอาดและสมดุล ให้รสหวานโทนน้ำผึ้ง ความหอมมันของถั่วลิสง บอดี้แบบนม และตบท้ายด้วยช็อกโกแลต มีให้เลือกทั้งระดับคั่วอ่อน คั่วกลาง และคั่วเข้ม เพื่อให้เหมาะกับการชงแบบเอสเพรสโซ่ ดริป หรือแบบอื่นๆ คั่วสดใหม่ในปริมาณน้อยเพื่อให้ได้คุณภาพดีที่สุด พร้อมระบุวันที่คั่วบนบรรจุภัณฑ์"
+      th: "เมล็ดกาแฟไทยอาราบิก้าคุณภาพเยี่ยม ปลูกบนที่สูง 1,300–1,500 เมตร ในอำเภอสันกำแพง จังหวัดเชียงใหม่ อาราบิก้า คาทิมอร์ เกรด A นี้ผ่านกระบวนการแปรรูปแบบ Washed เพื่อให้ได้รสชาติที่สะอาดและสมดุล ให้รสหวานโทนน้ำผึ้ง ความหอมมันของถั่วลิสง บอดี้แบบนม และตบท้ายด้วยช็อกโกแลต มีให้เลือกทั้งระดับคั่วอ่อน คั่วกลาง และคั่วเข้ม เพื่อให้เหมาะกับการชงแบบเอสเพรสโซ่ ดริป หรือแบบอื่นๆ คั่วสดใหม่ในปริมาณน้อยเพื่อให้ได้คุณภาพดีที่สุด พร้อมระบุวันที่คั่วบนบรรจุภัณฑ์",
     },
     positioning:
       "Affordable premium Thai single-origin coffee positioned for home brewers, small cafes, and resellers seeking consistent quality with strong margin potential.",
