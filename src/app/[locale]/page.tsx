@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
-import Navbar from "@/components/Navbar";
+import { NavBar } from "@/components/ui/tubelight-navbar";
 import { HeroSection } from "@/components/ui/hero-section-2";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
@@ -17,6 +17,10 @@ import {
   MessageCircle,
   Clock,
   Truck,
+  Coffee,
+  Store,
+  Info,
+  Mail,
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -56,14 +60,22 @@ export default function HomePage() {
   const ct = useTranslations("Contact");
   const wt = useTranslations("Wholesale");
   const ft = useTranslations("FAQ");
+  const nt = useTranslations("Common.nav");
   const locale = useLocale();
 
   const mainProduct = products[0];
   if (!mainProduct) return null;
 
+  const navItems = [
+    { name: nt("ourCoffee"), url: "#products", icon: Coffee },
+    { name: nt("wholesale"), url: "#products", icon: Store },
+    { name: nt("about"), url: "#about", icon: Info },
+    { name: nt("contact"), url: "#contact", icon: Mail },
+  ];
+
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900 selection:bg-amber-200">
-      <Navbar />
+    <div className="min-h-screen bg-stone-50 text-stone-900 selection:bg-amber-200 pb-24 md:pb-0">
+      <NavBar items={navItems} />
 
       {/* Hero Section - Integrated Component */}
       <HeroSection
@@ -147,7 +159,7 @@ export default function HomePage() {
           </AnimatedContainer>
 
           {/* Feature Cards Section */}
-          <AnimatedContainer delay={0.2} className="mb-16">
+          {/* <AnimatedContainer delay={0.2} className="mb-16">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -213,7 +225,7 @@ export default function HomePage() {
                 />
               </motion.div>
             </div>
-          </AnimatedContainer>
+          </AnimatedContainer> */}
 
           {/* Wholesale Q&A Section */}
           <AnimatedContainer delay={0.3} className="mx-auto max-w-4xl">
