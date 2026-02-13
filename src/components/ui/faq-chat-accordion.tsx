@@ -63,7 +63,7 @@ export function FaqAccordion({
                   {item.icon && (
                     <span
                       className={cn(
-                        "inline-block text-lg",
+                        "inline-block text-lg hover:cursor-pointer",
                         item.iconPosition === "right" ? "right-3" : "left-3"
                       )}
                       style={{

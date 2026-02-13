@@ -180,7 +180,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
               </motion.p>
               <motion.a
                 href={callToAction.href}
-                className="text-lg font-black tracking-widest text-amber-700 transition-colors hover:text-amber-600"
+                className=" cursor-pointer text-lg font-black tracking-widest text-amber-700 transition-colors hover:text-amber-600"
                 variants={itemVariants}
               >
                 {callToAction.text}

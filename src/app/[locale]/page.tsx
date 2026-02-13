@@ -17,6 +17,7 @@ import {
   MessageCircle,
   Clock,
   Truck,
+  Home,
   Coffee,
   Store,
   Info,
@@ -67,6 +68,7 @@ export default function HomePage() {
   if (!mainProduct) return null;
 
   const navItems = [
+    { name: nt("home"), url: "#", icon: Home },
     { name: nt("ourCoffee"), url: "#products", icon: Coffee },
     { name: nt("wholesale"), url: "#products", icon: Store },
     { name: nt("about"), url: "#about", icon: Info },
