@@ -1,0 +1,91 @@
+{
+  "HomePage": {
+    "title": "Premium Thai Arabica. Fresh Roasted. Direct From Chiang Mai.",
+    "description": "Grade A Arabica Catimor, 1,300–1,500m altitude, Washed Process. Roasted-to-order. Never old stock.",
+    "cta": {
+      "roast": "Choose Your Roast Level",
+      "line": "Order via LINE"
+    },
+    "why": {
+      "title": "Why Our Coffee Is Different",
+      "altitude": {
+        "title": "High Altitude = Clean Flavor",
+        "description": "Grown at 1,300–1,500 meters in Chiang Mai. Higher altitude means slower cherry growth — which means denser beans and better sweetness."
+      },
+      "freshness": {
+        "title": "Fresh Roast Policy",
+        "description": "We roast in small batches. Every bag clearly shows roast date. No warehouse-old coffee."
+      },
+      "direct": {
+        "title": "Direct Pricing — No Middleman",
+        "description": "We sell direct from roaster to you. That’s why our price is fair — without sacrificing quality."
+      }
+    }
+  },
+  "Product": {
+    "title": "Roasted Coffee – Thai Arabica Grade A",
+    "variety": "Variety: Arabica Catimor",
+    "process": "Process: Washed",
+    "altitude": "Altitude: 1,300–1,500m",
+    "tasteNotes": "Taste Notes: Honey • Peanut • Milk • Chocolate",
+    "roastLevels": {
+      "title": "Roast Levels Available:",
+      "light": "Light – Fruity & Bright",
+      "medium": "Medium – Balanced & Sweet",
+      "dark": "Dark – Bold & Chocolatey"
+    },
+    "pricing": {
+      "retail": "500g – 350฿ (Free Shipping)",
+      "wholesale": "1kg – 599฿ (Wholesale Price)"
+    }
+  },
+  "Common": {
+    "nav": {
+      "home": "Home",
+      "shop": "Shop Coffee",
+      "ourCoffee": "Our Coffee",
+      "wholesale": "For Cafe & Resellers",
+      "about": "About Us",
+      "contact": "Contact"
+    }
+  },
+  "Contact": {
+    "title": "Contact / Order via Line",
+    "phone": "Tel: 089-8556550 K.Jane",
+    "line": "ID Line: jane4079",
+    "gmail": "Gmail: jane4079@gmail.com",
+    "address": "Address: Sankamphang Chiangmai."
+  },
+  "Wholesale": {
+    "title": "Wholesale Coffee – Stable Quality, Stable Profit",
+    "perfectFor": "Perfect for: Small cafes, Home cafe sellers, Online resellers, Office coffee supply",
+    "whyResellers": {
+      "title": "Why Resellers Choose Us:",
+      "consistent": "Consistent roast",
+      "stable": "Stable supply",
+      "price": "Competitive wholesale price",
+      "privateLabel": "Private label available",
+      "sample": "Sample available before bulk order"
+    }
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "freshness": {
+      "q": "How long is coffee fresh?",
+      "a": "Best within 30 days from roast date. We recommend storing in an airtight container."
+    },
+    "storage": {
+      "q": "How should I store it?",
+      "a": "Keep sealed. Avoid sunlight and humidity. A cool, dry place is best."
+    },
+    "grind": {
+      "q": "Can I choose grind size?",
+      "a": "Yes — tell us your preferred brewing method (Drip, Espresso, Moka pot, etc.) when ordering on LINE."
+    },
+    "shipping": {
+      "q": "Do you ship nationwide?",
+      "a": "Yes, we ship all across Thailand via Flash, J&T, or Kerry."
+    }
+  }
+}
+
