@@ -34,7 +34,7 @@ export default function HomePage() {
           text: t("cta.roast"),
           href: "#products",
         }}
-        backgroundImage="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1200"
+        backgroundImage="/product-coffee.png"
         contactInfo={{
           phone: ct("phone"),
           address: ct("address"),
@@ -85,13 +85,18 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center gap-12 md:flex-row">
             <div className="text-center md:w-1/2">
-              {/* Simplified placeholder representing the image from OCR */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="aspect-[3/4] rounded-xl bg-stone-300" />
-                <div className="aspect-[3/4] rounded-xl bg-stone-300" />
+              {/* Product Coffee Bag Image */}
+              <div className="relative">
+                <img 
+                  src="/product-coffee.png" 
+                  alt={mainProduct.name}
+                  className="mx-auto max-w-sm rounded-xl shadow-lg"
+                />
               </div>
               <p className="mt-4 text-sm text-stone-400 italic">
-                Photos from our small batch roasting process
+                {locale === "th" 
+                  ? "ถุงวาล์ว คอฟฟี่เชียงใหม่ประเภท Grade A" 
+                  : "Premium Thai Arabica Coffee Valve Bag"}
               </p>
             </div>
             <div className="md:w-1/2">
