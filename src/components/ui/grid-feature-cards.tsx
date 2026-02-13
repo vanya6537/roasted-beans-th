@@ -55,9 +55,12 @@ function GridPattern({
 			<rect width="100%" height="100%" strokeWidth={0} fill={`url(#${patternId})`} />
 			{squares && (
 				<svg x={x} y={y} className="overflow-visible">
-					{squares.map(([x, y], index) => (
-						<rect strokeWidth="0" key={index} width={width + 1} height={height + 1} x={x * width} y={y * height} />
-					))}
+					{squares.map((square, index) => {
+						const [sqX, sqY] = square as [number, number];
+						return (
+							<rect strokeWidth="0" key={index} width={width + 1} height={height + 1} x={sqX * width} y={sqY * height} />
+						);
+					})}
 				</svg>
 			)}
 		</svg>

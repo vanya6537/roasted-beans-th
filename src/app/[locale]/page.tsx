@@ -5,9 +5,49 @@ import { Link } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
 import { HeroSection } from "@/components/ui/hero-section-2";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
+import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
 import { products } from "@/data/products";
-import { CheckCircle2, TrendingUp, Tag, Palette, Sparkles } from "lucide-react";
+import {
+  CheckCircle2,
+  TrendingUp,
+  Tag,
+  Palette,
+  Sparkles,
+  MessageCircle,
+  Clock,
+  Truck,
+} from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+
+type AnimatedContainerProps = {
+  delay?: number;
+  className?: React.ComponentProps<typeof motion.div>["className"];
+  children: React.ReactNode;
+};
+
+function AnimatedContainer({
+  className,
+  delay = 0.1,
+  children,
+}: AnimatedContainerProps) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return children;
+  }
+
+  return (
+    <motion.div
+      initial={{ filter: "blur(4px)", translateY: -8, opacity: 0 }}
+      whileInView={{ filter: "blur(0px)", translateY: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.8 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function HomePage() {
   const t = useTranslations("HomePage");
@@ -292,77 +332,149 @@ export default function HomePage() {
       {/* FAQ Section */}
       <section className="bg-stone-100 py-24">
         <div className="container mx-auto max-w-3xl px-4">
-          <h2 className="mb-12 text-center text-3xl font-black tracking-tight text-stone-900 md:text-4xl">
-            {ft("title")}
-          </h2>
-          <div className="space-y-6">
-            <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
-              <h3 className="mb-2 text-lg font-bold text-amber-900">
-                Q: {ft("freshness.q")}
-              </h3>
-              <p className="text-stone-600">{ft("freshness.a")}</p>
-            </div>
-            <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
-              <h3 className="mb-2 text-lg font-bold text-amber-900">
-                Q: {ft("storage.q")}
-              </h3>
-              <p className="text-stone-600">{ft("storage.a")}</p>
-            </div>
-            <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
-              <h3 className="mb-2 text-lg font-bold text-amber-900">
-                Q: {ft("grind.q")}
-              </h3>
-              <p className="text-stone-600">{ft("grind.a")}</p>
-            </div>
-            <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
-              <h3 className="mb-2 text-lg font-bold text-amber-900">
-                Q: {ft("shipping.q")}
-              </h3>
-              <p className="text-stone-600">{ft("shipping.a")}</p>
-            </div>
-          </div>
+          <AnimatedContainer className="mb-12 text-center">
+            <h2 className="text-3xl font-black tracking-tight text-stone-900 md:text-4xl">
+              {ft("title")}
+            </h2>
+          </AnimatedContainer>
+          <AnimatedContainer delay={0.2}>
+            <FaqAccordion
+              data={[
+                {
+                  id: 1,
+                  question: ft("freshness.q"),
+                  answer: ft("freshness.a"),
+                  icon: "💧",
+                  iconPosition: "left",
+                },
+                {
+                  id: 2,
+                  question: ft("storage.q"),
+                  answer: ft("storage.a"),
+                  icon: "📦",
+                  iconPosition: "left",
+                },
+                {
+                  id: 3,
+                  question: ft("grind.q"),
+                  answer: ft("grind.a"),
+                  icon: "⚙️",
+                  iconPosition: "left",
+                },
+                {
+                  id: 4,
+                  question: ft("shipping.q"),
+                  answer: ft("shipping.a"),
+                  icon: "🚚",
+                  iconPosition: "left",
+                },
+              ]}
+              className="w-full"
+              answerClassName="bg-amber-50 text-stone-700 border border-amber-100"
+            />
+          </AnimatedContainer>
         </div>
       </section>
 
-      {/* FAQ & Contact */}
+      {/* Contact & Footer */}
       <footer
         id="contact"
-        className="border-t border-stone-200 bg-stone-50 py-24"
+        className="border-t border-stone-200 bg-gradient-to-b from-stone-50 to-stone-100 py-24"
       >
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-2 text-4xl font-black tracking-tight text-stone-900">
-            {ct("title")}
-          </h2>
-          <p className="mb-12 text-lg font-bold text-amber-700">
-            {ct("brand")}
-          </p>
-          <p className="mx-auto mb-12 max-w-2xl text-stone-600 italic">
-            {ct("tagline")}
-          </p>
-          <div className="mx-auto max-w-2xl rounded-[3rem] border border-stone-100 bg-white p-12 shadow-xl shadow-stone-200">
-            <div className="space-y-6 text-xl">
-              <p className="mb-8 text-3xl font-black text-amber-900">
-                {ct("phone")}
-              </p>
-              <div className="mx-auto h-px max-w-xs bg-stone-100" />
-              <p className="font-bold text-stone-700">{ct("line")}</p>
-              <p className="font-bold text-stone-700">{ct("gmail")}</p>
-              <p className="mt-10 text-base text-stone-400">{ct("address")}</p>
+        <div className="container mx-auto px-4">
+          <AnimatedContainer className="mb-16 text-center">
+            <h2 className="mb-4 text-4xl font-black tracking-tight text-stone-900 md:text-5xl">
+              {locale === "th" ? "ติดต่อเราได้" : "Get in Touch"}
+            </h2>
+            <p className="mb-6 text-lg font-bold text-amber-700">
+              {ct("brand")}
+            </p>
+            <p className="mx-auto max-w-2xl text-stone-600 italic">
+              {ct("tagline")}
+            </p>
+          </AnimatedContainer>
+
+          <AnimatedContainer
+            delay={0.2}
+            className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2"
+          >
+            <div className="rounded-3xl border border-stone-200 bg-white p-10 shadow-lg">
+              <h3 className="mb-6 text-2xl font-black text-amber-900">
+                {locale === "th" ? "ข้อมูลติดต่อ" : "Contact Information"}
+              </h3>
+              <div className="space-y-5">
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">📞</span>
+                  <div>
+                    <p className="font-bold text-stone-900">{ct("phone")}</p>
+                    <p className="text-sm text-stone-500">
+                      {locale === "th" ? "K. เจนกำลังรอ" : "K. Jen is waiting"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">💬</span>
+                  <div>
+                    <p className="font-bold text-stone-900">{ct("line")}</p>
+                    <p className="text-sm text-stone-500">
+                      {locale === "th" ? "เร็วที่สุด" : "Fastest response"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">✉️</span>
+                  <div>
+                    <p className="font-bold text-stone-900">{ct("gmail")}</p>
+                    <p className="text-sm text-stone-500">
+                      {locale === "th" ? "24 ชั่วโมง" : "24/7 support"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 pt-4 border-t border-stone-100">
+                  <span className="text-2xl">📍</span>
+                  <div>
+                    <p className="font-bold text-stone-900">{ct("address")}</p>
+                    <p className="text-sm text-stone-500">
+                      {locale === "th" ? "บ้านเราในเชียงใหม่" : "Our home in Chiang Mai"}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <Link
-              href="https://line.me/ti/p/~jane4079"
-              target="_blank"
-              className="mt-12 inline-block rounded-2xl bg-green-600 px-12 py-5 text-2xl font-black text-white shadow-lg shadow-green-600/20 transition-all hover:bg-green-500"
-            >
-              Add Friend on LINE
-            </Link>
-          </div>
+            <div className="flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-amber-400 bg-amber-50 p-10 text-center">
+              <div className="mb-4 text-5xl">☕</div>
+              <h3 className="mb-3 text-2xl font-black text-amber-900">
+                {locale === "th" ? "ารสcoffee ดีที่สุด" : "Best Coffee Awaits"}
+              </h3>
+              <p className="mb-8 text-stone-600">
+                {locale === "th"
+                  ? "เชิญเรียนเยี่ยมและสั่งซื้อผ่าน LINE ได้เลย"
+                  : "Order now via LINE and get free consultation"}
+              </p>
+              <Link
+                href="https://line.me/ti/p/~jane4079"
+                target="_blank"
+                className="inline-block rounded-2xl bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-lg font-black text-white shadow-lg shadow-green-600/30 transition-all hover:scale-105 hover:shadow-lg active:scale-95"
+              >
+                {locale === "th" ? "เพิ่มเป็นเพื่อน" : "Add Friend on LINE"}
+              </Link>
+            </div>
+          </AnimatedContainer>
 
-          <div className="mt-24 text-xs font-bold tracking-[0.2em] text-stone-300 uppercase">
-            © {new Date().getFullYear()} Roasted Beans TH. Built with Pride in
-            Chiang Mai.
-          </div>
+          <AnimatedContainer
+            delay={0.4}
+            className="mt-20 border-t border-stone-200 pt-12 text-center"
+          >
+            <p className="mb-4 text-sm text-stone-500">
+              {locale === "th"
+                ? "ร่มเย็น คอฟฟี่ - กาแฟไทยคุณภาพจากหัวใจ"
+                : "Roasted Beans - Premium Thai Coffee with Heart"}
+            </p>
+            <p className="text-xs font-bold tracking-widest text-stone-300 uppercase">
+              © {new Date().getFullYear()} Roasted Beans TH.
+            </p>
+          </AnimatedContainer>
         </div>
       </footer>
     </div>
