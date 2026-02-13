@@ -69,6 +69,32 @@
       "price": "Competitive wholesale price",
       "privateLabel": "Private label available",
       "sample": "Sample available before bulk order"
+    },
+    "faqs": {
+      "moq": {
+        "q": "What's the minimum order quantity?",
+        "a": "Start with 500g sample (350฿). For bulk: 5kg minimum at 599฿/kg for volume discounts."
+      },
+      "profit": {
+        "q": "What profit margin can I expect?",
+        "a": "Resell at 1,000–1,200฿/kg. Average margin: 400–600฿ per kg. Many cafes charge 45–60฿ per cup (250ml) for 18–25g per serving."
+      },
+      "consistency": {
+        "q": "Is the roast consistent batch to batch?",
+        "a": "Yes. We roast to specification and test every batch. Minor variations in taste are normal with fresh roasting — part of the premium experience."
+      },
+      "supply": {
+        "q": "How reliable is supply?",
+        "a": "We maintain stock. Average turnaround: 2–3 days for orders. For ongoing contracts, we offer dedicated supply agreements."
+      },
+      "packaging": {
+        "q": "Can I get custom packaging?",
+        "a": "Yes. Minimum 50kg for custom labels. Standard valve bags provided as default. Ask on LINE for branding options and pricing."
+      },
+      "payment": {
+        "q": "What payment methods do you accept?",
+        "a": "Bank transfer (Thai banking hours), Promptpay QR code, Cash on delivery (Chiang Mai area), or LINE Pay. Ask K. Jen (089-8556550) for details."
+      }
     }
   },
   "FAQ": {

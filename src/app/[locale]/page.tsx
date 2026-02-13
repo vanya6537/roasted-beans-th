@@ -133,106 +133,166 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 -mt-32 -ml-32 h-96 w-96 rounded-full bg-amber-800/20 blur-3xl" />
         <div className="absolute bottom-0 right-0 -mb-32 -mr-32 h-96 w-96 rounded-full bg-amber-700/10 blur-3xl" />
 
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <AnimatedContainer>
-            <h2 className="mb-6 text-3xl font-black tracking-tight md:text-5xl">
+        <div className="relative z-10 container mx-auto px-4">
+          <AnimatedContainer className="mb-6 text-center">
+            <h2 className="mb-4 text-3xl font-black tracking-tight md:text-5xl">
               {wt("title")}
             </h2>
           </AnimatedContainer>
 
-          <AnimatedContainer delay={0.1}>
-            <p className="mx-auto mb-16 max-w-2xl text-lg font-medium text-amber-100">
+          <AnimatedContainer delay={0.1} className="mb-16 text-center">
+            <p className="mx-auto max-w-3xl text-lg font-medium text-amber-100">
               {wt("perfectFor")}
             </p>
           </AnimatedContainer>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <FeatureCard
-                feature={{
-                  icon: CheckCircle2,
-                  title: wt("whyResellers.consistent"),
-                  description: "",
-                }}
-                className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
-              />
-            </motion.div>
+          {/* Feature Cards Section */}
+          <AnimatedContainer delay={0.2} className="mb-16">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <FeatureCard
+                  feature={{
+                    icon: CheckCircle2,
+                    title: wt("whyResellers.consistent"),
+                    description: "",
+                  }}
+                  className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
+                />
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <FeatureCard
-                feature={{
-                  icon: TrendingUp,
-                  title: wt("whyResellers.stable"),
-                  description: "",
-                }}
-                className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
-              />
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <FeatureCard
+                  feature={{
+                    icon: TrendingUp,
+                    title: wt("whyResellers.stable"),
+                    description: "",
+                  }}
+                  className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
+                />
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <FeatureCard
-                feature={{
-                  icon: Tag,
-                  title: wt("whyResellers.price"),
-                  description: "",
-                }}
-                className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
-              />
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <FeatureCard
+                  feature={{
+                    icon: Tag,
+                    title: wt("whyResellers.price"),
+                    description: "",
+                  }}
+                  className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
+                />
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <FeatureCard
-                feature={{
-                  icon: Palette,
-                  title: wt("whyResellers.privateLabel"),
-                  description: "",
-                }}
-                className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
-              />
-            </motion.div>
-          </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <FeatureCard
+                  feature={{
+                    icon: Palette,
+                    title: wt("whyResellers.privateLabel"),
+                    description: "",
+                  }}
+                  className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
+                />
+              </motion.div>
+            </div>
+          </AnimatedContainer>
 
-          {/* Sample CTA Card - Premium Highlight */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mx-auto max-w-2xl rounded-3xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 p-10 text-center shadow-2xl shadow-amber-900/40 border border-amber-400/30"
-          >
-            <motion.h3
-              className="mb-3 text-3xl font-black text-white"
-              initial={{ scale: 0.95 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+          {/* Wholesale Q&A Section */}
+          <AnimatedContainer delay={0.3} className="mx-auto max-w-4xl">
+            <div className="mb-8 text-center">
+              <h3 className="text-2xl font-black text-amber-400 mb-2">
+                {wt("whyResellers.title")}
+              </h3>
+              <p className="text-amber-100/80 text-sm">
+                Common questions from resellers and cafe owners
+              </p>
+            </div>
+            <FaqAccordion
+              data={[
+                {
+                  id: 1,
+                  question: wt("faqs.moq.q"),
+                  answer: wt("faqs.moq.a"),
+                  icon: "📦",
+                  iconPosition: "left",
+                },
+                {
+                  id: 2,
+                  question: wt("faqs.profit.q"),
+                  answer: wt("faqs.profit.a"),
+                  icon: "💰",
+                  iconPosition: "left",
+                },
+                {
+                  id: 3,
+                  question: wt("faqs.consistency.q"),
+                  answer: wt("faqs.consistency.a"),
+                  icon: "✅",
+                  iconPosition: "left",
+                },
+                {
+                  id: 4,
+                  question: wt("faqs.supply.q"),
+                  answer: wt("faqs.supply.a"),
+                  icon: "🚚",
+                  iconPosition: "left",
+                },
+                {
+                  id: 5,
+                  question: wt("faqs.packaging.q"),
+                  answer: wt("faqs.packaging.a"),
+                  icon: "📋",
+                  iconPosition: "left",
+                },
+                {
+                  id: 6,
+                  question: wt("faqs.payment.q"),
+                  answer: wt("faqs.payment.a"),
+                  icon: "💳",
+                  iconPosition: "left",
+                },
+              ]}
+              className="w-full bg-stone-900/50 rounded-2xl p-6"
+              questionClassName="bg-amber-900/50 text-amber-50"
+              answerClassName="bg-amber-900/20 text-amber-50 border border-amber-700/30"
+            />
+          </AnimatedContainer>
+
+          {/* CTA */}
+          <AnimatedContainer delay={0.4} className="mt-16 text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="inline-block rounded-3xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 px-10 py-6 text-center shadow-2xl shadow-amber-900/40 border border-amber-400/30"
             >
-              {wt("whyResellers.sample")}
-            </motion.h3>
-            <p className="text-amber-50 italic font-medium">
-              {'"Try 500g first before ordering bulk."'}
-            </p>
-          </motion.div>
+              <p className="text-white font-bold text-lg">
+                Ready to start? Order your sample now via LINE
+              </p>
+              <p className="text-amber-100 text-sm mt-2">
+                jane4079 • 089-8556550 • K. เจน
+              </p>
+            </motion.div>
+          </AnimatedContainer>
         </div>
       </section>
 

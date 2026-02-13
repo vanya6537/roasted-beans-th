@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://roastedbeans.th";
+  const baseUrl = "https://roasted-beans-th.vercel.app";
   const locales = ["en", "th"];
 
   // Main pages for both locales

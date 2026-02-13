@@ -26,4 +26,4 @@ User-agent: SemrushBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://roastedbeans.th/sitemap.xml
+Sitemap: https://roasted-beans-th.vercel.app/sitemap.xml

@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
 
   const isThaiLocale = locale === "th";
-  const baseUrl = "https://roastedbeans.th";
+  const baseUrl = "https://roasted-beans-th.vercel.app";
   const canonicalUrl = `${baseUrl}/${locale}`;
 
   return {
@@ -125,10 +125,10 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${geist.variable}`}>
       <head>
-        <link rel="canonical" href={`https://roastedbeans.th/${locale}`} />
-        <link rel="alternate" hrefLang="th" href="https://roastedbeans.th/th" />
-        <link rel="alternate" hrefLang="en" href="https://roastedbeans.th/en" />
-        <link rel="alternate" hrefLang="x-default" href="https://roastedbeans.th/en" />
+        <link rel="canonical" href={`https://roasted-beans-th.vercel.app/${locale}`} />
+        <link rel="alternate" hrefLang="th" href="https://roasted-beans-th.vercel.app/th" />
+        <link rel="alternate" hrefLang="en" href="https://roasted-beans-th.vercel.app/en" />
+        <link rel="alternate" hrefLang="x-default" href="https://roasted-beans-th.vercel.app/en" />
         <meta name="theme-color" content="#92400e" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -147,7 +147,7 @@ export default async function RootLayout({
                 locale === "th"
                   ? "เมล็ดกาแฟไทยอาราบิก้า เกรด A จากเชียงใหม่ ปลูกที่ความสูง 1,300-1,500 เมตร คั่วสดใหม่ตามออเดอร์"
                   : "Premium Grade A Thai Arabica coffee from Chiang Mai, grown at 1,300-1,500m altitude, fresh roasted to order",
-              image: "https://roastedbeans.th/product-coffee.jpg",
+              image: "https://roasted-beans-th.vercel.app/product-coffee.jpg",
               telephone: "+66-89-855-6550",
               email: "jane4079@gmail.com",
               address: {
@@ -193,7 +193,7 @@ export default async function RootLayout({
                 locale === "th"
                   ? "กาแฟคั่ว ไทยอาราบิก้า เกรด A ถุงวาล์ว"
                   : "Roasted Thai Arabica Grade A Coffee - Valve Bag",
-              image: "https://roastedbeans.th/product-coffee.jpg",
+              image: "https://roasted-beans-th.vercel.app/product-coffee.jpg",
               description:
                 locale === "th"
                   ? "เมล็ดกาแฟไทยอาราบิก้า พันธุ์คาทิมอร์ เกรด A ปลูกที่ความสูง 1,300-1,500 เมตร จากแขวงสันกำแพง เชียงใหม่ แปรรูปแบบ Washed คั่วสดใหม่ตามออเดอร์ รสชาติ น้ำหวาน ถั่ว นม โชคโลต"
@@ -209,7 +209,7 @@ export default async function RootLayout({
               offers: [
                 {
                   "@type": "Offer",
-                  url: "https://roastedbeans.th/" + locale,
+                  url: "https://roasted-beans-th.vercel.app/" + locale,
                   name: locale === "th" ? "ขายปลีก 500 กรัม" : "Retail 500g",
                   priceCurrency: "THB",
                   price: "350",
@@ -237,7 +237,7 @@ export default async function RootLayout({
                 },
                 {
                   "@type": "Offer",
-                  url: "https://roastedbeans.th/" + locale,
+                  url: "https://roasted-beans-th.vercel.app/" + locale,
                   name: locale === "th" ? "ขายส่ง 1 กิโลกรัม" : "Wholesale 1kg",
                   priceCurrency: "THB",
                   price: "599",
@@ -291,8 +291,8 @@ export default async function RootLayout({
                 locale === "th"
                   ? "ร่มเย็น คอฟฟี่ (Ruem Yen Coffee)"
                   : "Roasted Beans Chiang Mai",
-              url: `https://roastedbeans.th/${locale}`,
-              logo: "https://roastedbeans.th/product-coffee.jpg",
+              url: `https://roasted-beans-th.vercel.app/${locale}`,
+              logo: "https://roasted-beans-th.vercel.app/product-coffee.jpg",
               description:
                 locale === "th"
                   ? "ซื้อ-ขายกาแฟสารและสินค้าพืชผลทางการเกษตรทุกประเภท"
