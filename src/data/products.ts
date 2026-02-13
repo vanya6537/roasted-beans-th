@@ -76,7 +76,7 @@ export const products: CoffeeProduct[] = [
       sweetness: "medium",
       bitterness: "low",
     },
-    tasteNotes: ["Honey", "Peanut", "Milk", "Chocolate"],
+    tasteNotes: ["honey", "peanut", "milk", "chocolate"],
     roastLevelsAvailable: ["light", "medium", "dark"],
     grindOptionsLikelyAvailable: [
       "whole_bean",

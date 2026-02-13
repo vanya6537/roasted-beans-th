@@ -58,7 +58,9 @@ function AnimatedContainer({
 
 export default function HomePage() {
   const t = useTranslations("HomePage");
+  const at = useTranslations("About");
   const pt = useTranslations("Product");
+  const pdt = useTranslations("ProductDisplay");
   const ct = useTranslations("Contact");
   const wt = useTranslations("Wholesale");
   const ft = useTranslations("FAQ");
@@ -70,7 +72,7 @@ export default function HomePage() {
 
   const navItems = [
     { name: nt("home"), url: "#", icon: Home },
-    { name: nt("ourCoffee"), url: "#products", icon: Coffee },
+    // { name: nt("ourCoffee"), url: "#products", icon: Coffee },
     { name: nt("wholesale"), url: "#products", icon: Store },
     { name: nt("about"), url: "#about", icon: Info },
     { name: nt("contact"), url: "#contact", icon: Mail },
@@ -176,26 +178,26 @@ export default function HomePage() {
               {/* Specs Grid */}
               <div className="grid gap-4 md:grid-cols-2 mb-8">
                 <div className="rounded-lg bg-amber-900/40 p-4 border border-amber-700/20">
-                  <p className="text-amber-200/70 text-sm font-semibold mb-2">ORIGIN</p>
-                  <p className="text-white font-bold">{mainProduct.origin.country}</p>
-                  <p className="text-amber-100 text-sm">{mainProduct.origin.province} • {mainProduct.origin.district}</p>
+                  <p className="text-amber-200/70 text-sm font-semibold mb-2">{pdt("labels.origin")}</p>
+                  <p className="text-white font-bold">{pdt("origin.country")}</p>
+                  <p className="text-amber-100 text-sm">{pdt("origin.detail")}</p>
                   <p className="text-amber-200/60 text-xs mt-1">{mainProduct.origin.altitudeMeters.min}–{mainProduct.origin.altitudeMeters.max}m</p>
                 </div>
                 <div className="rounded-lg bg-amber-900/40 p-4 border border-amber-700/20">
-                  <p className="text-amber-200/70 text-sm font-semibold mb-2">VARIETY</p>
+                  <p className="text-amber-200/70 text-sm font-semibold mb-2">{pdt("labels.variety")}</p>
                   <p className="text-white font-bold">{mainProduct.variety}</p>
                   <p className="text-amber-100 text-sm">{mainProduct.grade} • {mainProduct.process}</p>
-                  <p className="text-amber-200/60 text-xs mt-1">Roast Date: {locale === 'th' ? '31/1/2026' : '2026-01-31'}</p>
+                  <p className="text-amber-200/60 text-xs mt-1">{locale === 'th' ? 'วันที่คั่ว: 31/1/2026' : 'Roast Date: 2026-01-31'}</p>
                 </div>
               </div>
 
               {/* Taste Notes */}
               <div className="mb-8">
-                <p className="text-amber-200/70 text-sm font-semibold mb-3">TASTE NOTES</p>
+                <p className="text-amber-200/70 text-sm font-semibold mb-3">{pdt("labels.tasteNotes")}</p>
                 <div className="flex flex-wrap gap-2">
                   {mainProduct.tasteNotes.map((note) => (
                     <span key={note} className="inline-block px-4 py-2 rounded-full bg-amber-600/30 border border-amber-500/50 text-amber-100 text-sm font-medium">
-                      {note}
+                      {pdt(`tasteNotes.${note}`)}
                     </span>
                   ))}
                 </div>
@@ -203,11 +205,11 @@ export default function HomePage() {
 
               {/* Roast Levels */}
               <div className="mb-8">
-                <p className="text-amber-200/70 text-sm font-semibold mb-3">ROAST LEVELS</p>
+                <p className="text-amber-200/70 text-sm font-semibold mb-3">{pdt("labels.roastLevels")}</p>
                 <div className="flex flex-wrap gap-2">
                   {mainProduct.roastLevelsAvailable.map((level) => (
                     <span key={level} className="inline-block px-4 py-2 rounded-lg bg-amber-900/40 border border-amber-600/30 text-amber-50 text-sm font-medium capitalize">
-                      {level === 'light' ? (locale === 'th' ? 'อ่อน' : 'Light') : level === 'medium' ? (locale === 'th' ? 'กลาง' : 'Medium') : (locale === 'th' ? 'เข้ม' : 'Dark')}
+                      {pdt(`roastNames.${level}`)}
                     </span>
                   ))}
                 </div>
@@ -215,18 +217,18 @@ export default function HomePage() {
 
               {/* Pricing */}
               <div>
-                <p className="text-amber-200/70 text-sm font-semibold mb-3">PRICING</p>
+                <p className="text-amber-200/70 text-sm font-semibold mb-3">{pdt("labels.pricing")}</p>
                 <div className="grid gap-3 md:grid-cols-2">
                   {mainProduct.packagingOptions.map((option) => (
                     <div key={option.sku} className="rounded-lg bg-amber-900/50 p-4 border border-amber-600/30">
                       <div className="flex justify-between items-start mb-2">
-                        <p className="text-white font-bold">{option.sizeGrams}g</p>
+                        <p className="text-white font-bold">{option.sizeGrams}{pdt("size.grams")}</p>
                         <p className="text-amber-300 font-bold text-lg">{option.priceTHB}฿</p>
                       </div>
                       <div className="text-amber-100/70 text-xs space-y-1">
-                        <p>{option.shippingIncluded ? '✓ Free Shipping' : 'Shipping TBD'}</p>
-                        <p>{option.vatIncluded ? '✓ VAT Included' : 'VAT Not Included'}</p>
-                        <p className="capitalize font-semibold text-amber-300 mt-2">{option.targetMarket}</p>
+                        <p>{option.shippingIncluded ? '✓ ' + pdt("packaging.freeShipping") : pdt("packaging.shippingTBD")}</p>
+                        <p>{option.vatIncluded ? '✓ ' + pdt("packaging.vatIncluded") : pdt("packaging.vatNotIncluded")}</p>
+                        <p className="font-semibold text-amber-300 mt-2">{pdt(`size.market.${option.targetMarket}`)}</p>
                       </div>
                     </div>
                   ))}
@@ -382,37 +384,34 @@ export default function HomePage() {
       <section id="about" className="bg-white py-24">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="mb-10 text-3xl font-black tracking-tight text-amber-900 md:text-5xl">
-            From Chiang Mai Highlands to Your Cup
+            {at("title")}
           </h2>
           <div className="prose prose-stone lg:prose-xl max-w-none text-stone-600">
             <p className="mb-8 leading-relaxed">
-              We source Thai Arabica grown at high altitude in Sankamphaeng,
-              Chiang Mai. Our mission is simple: Make high-quality Thai coffee
-              accessible — without luxury pricing.
+              {at("description")}
             </p>
             <div className="my-12 grid gap-8 md:grid-cols-2">
               <div className="rounded-2xl bg-stone-50 p-6">
                 <h4 className="mb-4 font-black tracking-tighter text-amber-900 uppercase">
-                  Quality First
+                  {at("qualityFirst.title")}
                 </h4>
                 <ul className="space-y-3 font-medium">
-                  <li className="flex gap-2">✔ Defect-screened</li>
-                  <li className="flex gap-2">✔ Small batch roasting</li>
+                  <li className="flex gap-2">✔ {at("qualityFirst.items.0")}</li>
+                  <li className="flex gap-2">✔ {at("qualityFirst.items.1")}</li>
                 </ul>
               </div>
               <div className="rounded-2xl bg-stone-50 p-6">
                 <h4 className="mb-4 font-black tracking-tighter text-amber-900 uppercase">
-                  Direct & Honest
+                  {at("directHonest.title")}
                 </h4>
                 <ul className="space-y-3 font-medium">
-                  <li className="flex gap-2">✔ Direct to consumer</li>
-                  <li className="flex gap-2">✔ Real origins</li>
+                  <li className="flex gap-2">✔ {at("directHonest.items.0")}</li>
+                  <li className="flex gap-2">✔ {at("directHonest.items.1")}</li>
                 </ul>
               </div>
             </div>
             <blockquote className="my-20 text-center text-2xl font-black tracking-tighter text-stone-300 uppercase">
-              No fake branding. No imported blends. <br /> Just{" "}
-              <span className="text-amber-600">real Thai Arabica</span>.
+              {at("blockquote")}
             </blockquote>
           </div>
         </div>
@@ -495,7 +494,13 @@ export default function HomePage() {
                 <div className="flex items-start gap-4">
                   <span className="text-2xl">📞</span>
                   <div>
-                    <p className="font-bold text-stone-900">{ct("phone")}</p>
+                    <Link
+                      href="https://line.me/ti/p/~jane4079"
+                      target="_blank"
+                      className="font-bold text-stone-900 hover:text-green-600 transition-colors underline"
+                    >
+                      {ct("phone")}
+                    </Link>
                     <p className="text-sm text-stone-500">
                       {locale === "th" ? "K. เจนกำลังรอ" : "K. Jen is waiting"}
                     </p>
@@ -504,7 +509,13 @@ export default function HomePage() {
                 <div className="flex items-start gap-4">
                   <span className="text-2xl">💬</span>
                   <div>
-                    <p className="font-bold text-stone-900">{ct("line")}</p>
+                    <Link
+                      href="https://line.me/ti/p/~jane4079"
+                      target="_blank"
+                      className="font-bold text-stone-900 hover:text-green-600 transition-colors underline"
+                    >
+                      {ct("line")}
+                    </Link>
                     <p className="text-sm text-stone-500">
                       {locale === "th" ? "เร็วที่สุด" : "Fastest response"}
                     </p>

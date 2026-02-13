@@ -23,6 +23,19 @@
       }
     }
   },
+  "About": {
+    "title": "From Chiang Mai Highlands to Your Cup",
+    "description": "We source Thai Arabica grown at high altitude in Sankamphaeng, Chiang Mai. Our mission is simple: Make high-quality Thai coffee accessible — without luxury pricing.",
+    "qualityFirst": {
+      "title": "Quality First",
+      "items": ["Defect-screened", "Small batch roasting"]
+    },
+    "directHonest": {
+      "title": "Direct & Honest",
+      "items": ["Direct to consumer", "Real origins"]
+    },
+    "blockquote": "No fake branding. No imported blends. Just real Thai Arabica."
+  },
   "Product": {
     "title": "Roasted Coffee – Thai Arabica Grade A",
     "variety": "Variety: Arabica Catimor",
@@ -38,6 +51,43 @@
     "pricing": {
       "retail": "500g – 350฿ (Free Shipping)",
       "wholesale": "1kg – 599฿ (Wholesale Price)"
+    }
+  },
+  "ProductDisplay": {
+    "labels": {
+      "origin": "ORIGIN",
+      "variety": "VARIETY",
+      "tasteNotes": "TASTE NOTES",
+      "roastLevels": "ROAST LEVELS",
+      "pricing": "PRICING"
+    },
+    "origin": {
+      "country": "Thailand",
+      "detail": "Chiang Mai • Sankamphaeng"
+    },
+    "roastNames": {
+      "light": "Light",
+      "medium": "Medium",
+      "dark": "Dark"
+    },
+    "tasteNotes": {
+      "honey": "Honey",
+      "peanut": "Peanut",
+      "milk": "Milk",
+      "chocolate": "Chocolate"
+    },
+    "packaging": {
+      "freeShipping": "Free Shipping",
+      "shippingTBD": "Shipping TBD",
+      "vatIncluded": "VAT Included",
+      "vatNotIncluded": "VAT Not Included"
+    },
+    "size": {
+      "grams": "g",
+      "market": {
+        "retail": "retail",
+        "wholesale": "wholesale"
+      }
     }
   },
   "Common": {
