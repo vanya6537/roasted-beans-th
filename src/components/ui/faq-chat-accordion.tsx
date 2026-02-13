@@ -63,7 +63,7 @@ export function FaqAccordion({
                   {item.icon && (
                     <span
                       className={cn(
-                        "absolute bottom-6 text-lg",
+                        "inline-block text-lg",
                         item.iconPosition === "right" ? "right-3" : "left-3"
                       )}
                       style={{

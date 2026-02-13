@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
@@ -124,168 +125,114 @@ export default function HomePage() {
       </section>
 
       {/* Product Section */}
-      <section id="products" className="bg-stone-100 py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center gap-12 md:flex-row">
-            <div className="text-center md:w-1/2">
-              {/* Product Coffee Bag Image */}
-              <div className="relative">
-                <img 
-                  src="/product-coffee.png" 
-                  alt={mainProduct.name}
-                  className="mx-auto max-w-sm rounded-xl shadow-lg"
-                />
-              </div>
-              <p className="mt-4 text-sm text-stone-400 italic">
-                {locale === "th" 
-                  ? "ถุงวาล์ว คอฟฟี่เชียงใหม่ประเภท Grade A" 
-                  : "Premium Thai Arabica Coffee Valve Bag"}
-              </p>
-            </div>
-            <div className="md:w-1/2">
-              <span className="text-sm font-bold tracking-widest text-amber-700 uppercase">
-                {locale === "th" ? mainProduct.variety : mainProduct.variety}
-              </span>
-              <h2 className="mt-2 mb-6 text-3xl font-bold text-stone-900 md:text-5xl">
-                {locale === "th"
-                  ? "กาแฟคั่ว – ไทยอาราบิก้า เกรด A"
-                  : mainProduct.name}
-              </h2>
-
-              <p className="mb-8 leading-relaxed text-stone-600">
-                {locale === "th"
-                  ? mainProduct.description.th
-                  : mainProduct.description.en}
-              </p>
-
-              <ul className="mb-8 grid grid-cols-2 gap-4">
-                <li className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-amber-600" />
-                  <span className="text-xs font-medium tracking-wide text-stone-700 uppercase">
-                    {pt("process")}: {mainProduct.process}
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-amber-600" />
-                  <span className="text-xs font-medium tracking-wide text-stone-700 uppercase">
-                    {pt("altitude")}: {mainProduct.origin.altitudeMeters.min}-
-                    {mainProduct.origin.altitudeMeters.max}m
-                  </span>
-                </li>
-              </ul>
-
-              <div className="mb-8 rounded-xl border border-amber-100 bg-amber-50 p-4">
-                <p className="mb-1 font-bold text-amber-900">
-                  {pt("tasteNotes")}
-                </p>
-                <p className="text-amber-800 italic">
-                  {mainProduct.tasteNotes.join(" • ")}
-                </p>
-              </div>
-
-              <div className="mb-8 rounded-2xl border border-stone-200 bg-white p-6 font-sans shadow-sm">
-                <h4 className="mb-4 font-bold text-stone-800">
-                  {pt("roastLevels.title")}
-                </h4>
-                <div className="space-y-3">
-                  {mainProduct.roastLevelsAvailable.map((level) => (
-                    <p
-                      key={level}
-                      className="flex items-center justify-between border-t border-stone-50 pt-2 text-stone-700 first:border-0 first:pt-0"
-                    >
-                      <span>{pt(`roastLevels.${level}`)}</span>
-                      <span
-                        className={`h-6 w-6 rounded-full shadow-inner ${
-                          level === "light"
-                            ? "bg-amber-300"
-                            : level === "medium"
-                              ? "bg-amber-600"
-                              : "bg-amber-900"
-                        }`}
-                      />
-                    </p>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                {mainProduct.packagingOptions.map((opt) => (
-                  <div key={opt.sku} className="flex items-baseline gap-2">
-                    <span className="text-3xl font-extrabold tracking-tighter text-amber-900">
-                      {opt.priceTHB}฿
-                    </span>
-                    <span className="font-medium text-stone-500">
-                      /{" "}
-                      {opt.sizeGrams >= 1000
-                        ? `${opt.sizeGrams / 1000}kg`
-                        : `${opt.sizeGrams}g`}
-                    </span>
-                    {opt.shippingIncluded && (
-                      <span className="ml-2 rounded-full border border-green-200 bg-green-100 px-2 py-0.5 text-[10px] font-black tracking-tighter text-green-700 uppercase">
-                        FREE SHIPPING
-                      </span>
-                    )}
-                    {opt.targetMarket === "wholesale" && (
-                      <span className="ml-2 rounded-full border border-amber-200 bg-amber-100 px-2 py-0.5 text-[10px] font-black tracking-tighter text-amber-700 uppercase">
-                        WHOLESALE PRICE
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="https://line.me/ti/p/~jane4079"
-                target="_blank"
-                className="mt-10 inline-block w-full rounded-2xl bg-green-600 px-10 py-5 text-center text-xl font-black text-white shadow-lg shadow-green-900/10 transition-all hover:scale-[1.02] hover:bg-green-500 active:scale-95"
-              >
-                Order via LINE (jane4079)
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Wholesale Section */}
       <section
         id="wholesale"
-        className="relative overflow-hidden bg-stone-900 py-24 text-white"
+        className="relative overflow-hidden bg-gradient-to-br from-amber-950 via-stone-900 to-stone-950 py-24 text-white"
       >
-        <div className="absolute top-0 right-0 -mt-32 -mr-32 h-64 w-64 rounded-full bg-amber-800/10 blur-3xl" />
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <h2 className="mb-6 text-3xl font-black tracking-tight md:text-5xl">
-            {wt("title")}
-          </h2>
-          <p className="mx-auto mb-16 max-w-2xl text-lg font-medium text-stone-400">
-            {wt("perfectFor")}
-          </p>
+        {/* Animated background elements */}
+        <div className="absolute top-0 left-0 -mt-32 -ml-32 h-96 w-96 rounded-full bg-amber-800/20 blur-3xl" />
+        <div className="absolute bottom-0 right-0 -mb-32 -mr-32 h-96 w-96 rounded-full bg-amber-700/10 blur-3xl" />
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="flex items-center justify-center rounded-2xl border border-stone-800 bg-stone-800/20 p-8 text-center backdrop-blur-sm">
-              <h4 className="text-xl font-bold">
-                {wt("whyResellers.consistent")}
-              </h4>
-            </div>
-            <div className="flex items-center justify-center rounded-2xl border border-stone-800 bg-stone-800/20 p-8 text-center backdrop-blur-sm">
-              <h4 className="text-xl font-bold">{wt("whyResellers.stable")}</h4>
-            </div>
-            <div className="flex items-center justify-center rounded-2xl border border-stone-800 bg-stone-800/20 p-8 text-center backdrop-blur-sm">
-              <h4 className="text-xl font-bold">{wt("whyResellers.price")}</h4>
-            </div>
-            <div className="flex items-center justify-center rounded-2xl border border-stone-800 bg-stone-800/20 p-8 text-center backdrop-blur-sm">
-              <h4 className="text-xl font-bold">
-                {wt("whyResellers.privateLabel")}
-              </h4>
-            </div>
-            <div className="flex flex-col items-center justify-center rounded-2xl border border-amber-800/50 border-stone-800 bg-amber-900/40 p-8 text-center sm:col-span-2 lg:col-span-2">
-              <h3 className="mb-2 text-2xl font-black text-amber-200">
-                {wt("whyResellers.sample")}
-              </h3>
-              <p className="text-amber-100/70 italic">
-                “Try 500g first before ordering bulk.”
-              </p>
-            </div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <AnimatedContainer>
+            <h2 className="mb-6 text-3xl font-black tracking-tight md:text-5xl">
+              {wt("title")}
+            </h2>
+          </AnimatedContainer>
+
+          <AnimatedContainer delay={0.1}>
+            <p className="mx-auto mb-16 max-w-2xl text-lg font-medium text-amber-100">
+              {wt("perfectFor")}
+            </p>
+          </AnimatedContainer>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <FeatureCard
+                feature={{
+                  icon: CheckCircle2,
+                  title: wt("whyResellers.consistent"),
+                  description: "",
+                }}
+                className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <FeatureCard
+                feature={{
+                  icon: TrendingUp,
+                  title: wt("whyResellers.stable"),
+                  description: "",
+                }}
+                className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <FeatureCard
+                feature={{
+                  icon: Tag,
+                  title: wt("whyResellers.price"),
+                  description: "",
+                }}
+                className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <FeatureCard
+                feature={{
+                  icon: Palette,
+                  title: wt("whyResellers.privateLabel"),
+                  description: "",
+                }}
+                className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm hover:border-amber-600/50 transition-colors h-full"
+              />
+            </motion.div>
           </div>
+
+          {/* Sample CTA Card - Premium Highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mx-auto max-w-2xl rounded-3xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 p-10 text-center shadow-2xl shadow-amber-900/40 border border-amber-400/30"
+          >
+            <motion.h3
+              className="mb-3 text-3xl font-black text-white"
+              initial={{ scale: 0.95 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              {wt("whyResellers.sample")}
+            </motion.h3>
+            <p className="text-amber-50 italic font-medium">
+              {'"Try 500g first before ordering bulk."'}
+            </p>
+          </motion.div>
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -142,7 +143,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
               {logo && (
                 <div className="flex items-center gap-3">
                   {logo.url && (
-                    <img src={logo.url} alt={logo.alt} className="h-10 w-10" />
+                    <Image src={logo.url} alt={logo.alt} width={40} height={40} className="h-10 w-10" />
                   )}
                   <div>
                     {logo.text && (
