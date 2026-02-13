@@ -1,6 +1,7 @@
-import {useTranslations} from 'next-intl';
+import {useTranslations, useLocale} from 'next-intl';
 import {Link} from '@/i18n/routing';
 import Navbar from '@/components/Navbar';
+import { products } from '@/data/products';
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
@@ -8,6 +9,10 @@ export default function HomePage() {
   const ct = useTranslations('Contact');
   const wt = useTranslations('Wholesale');
   const ft = useTranslations('FAQ');
+  const locale = useLocale();
+
+  const mainProduct = products[0];
+  if (!mainProduct) return null;
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900 selection:bg-amber-200">
@@ -81,53 +86,67 @@ export default function HomePage() {
                <p className="text-sm text-stone-400 mt-4 italic">Photos from our small batch roasting process</p>
             </div>
             <div className="md:w-1/2">
-              <span className="text-amber-700 font-bold tracking-widest uppercase text-sm">{pt('variety')}</span>
-              <h2 className="text-3xl md:text-5xl font-bold mt-2 mb-6 text-stone-900">{pt('title')}</h2>
+              <span className="text-amber-700 font-bold tracking-widest uppercase text-sm">
+                {locale === 'th' ? mainProduct.variety : mainProduct.variety}
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold mt-2 mb-6 text-stone-900">
+                {locale === 'th' ? "กาแฟคั่ว – ไทยอาราบิก้า เกรด A" : mainProduct.name}
+              </h2>
+
+              <p className="text-stone-600 mb-8 leading-relaxed">
+                {locale === 'th' ? mainProduct.description.th : mainProduct.description.en}
+              </p>
               
-              <ul className="space-y-4 mb-8">
+              <ul className="grid grid-cols-2 gap-4 mb-8">
                 <li className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-amber-600 rounded-full" />
-                  <span className="font-medium text-stone-700 uppercase tracking-wide text-sm">{pt('process')}</span>
+                  <span className="font-medium text-stone-700 uppercase tracking-wide text-xs">
+                    {pt('process')}: {mainProduct.process}
+                  </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-amber-600 rounded-full" />
-                  <span className="font-medium text-stone-700 uppercase tracking-wide text-sm">{pt('altitude')}</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-amber-600 rounded-full" />
-                  <span className="font-bold text-amber-900">{pt('tasteNotes')}</span>
+                  <span className="font-medium text-stone-700 uppercase tracking-wide text-xs">
+                    {pt('altitude')}: {mainProduct.origin.altitudeMeters.min}-{mainProduct.origin.altitudeMeters.max}m
+                  </span>
                 </li>
               </ul>
+              
+              <div className="bg-amber-50 p-4 rounded-xl mb-8 border border-amber-100">
+                <p className="font-bold text-amber-900 mb-1">{pt('tasteNotes')}</p>
+                <p className="text-amber-800 italic">
+                  {mainProduct.tasteNotes.join(' • ')}
+                </p>
+              </div>
 
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 mb-8 font-sans">
                 <h4 className="font-bold mb-4 text-stone-800">{pt('roastLevels.title')}</h4>
                 <div className="space-y-3">
-                  <p className="flex justify-between items-center text-stone-700">
-                    <span>{pt('roastLevels.light')}</span>
-                    <span className="w-6 h-6 rounded-full bg-amber-300 shadow-inner" />
-                  </p>
-                  <p className="flex justify-between items-center text-stone-700 border-t border-stone-50 pt-2">
-                    <span>{pt('roastLevels.medium')}</span>
-                    <span className="w-6 h-6 rounded-full bg-amber-600 shadow-inner" />
-                  </p>
-                  <p className="flex justify-between items-center text-stone-700 border-t border-stone-50 pt-2">
-                    <span>{pt('roastLevels.dark')}</span>
-                    <span className="w-6 h-6 rounded-full bg-amber-900 shadow-inner" />
-                  </p>
+                  {mainProduct.roastLevelsAvailable.map((level) => (
+                    <p key={level} className="flex justify-between items-center text-stone-700 border-t border-stone-50 first:border-0 pt-2 first:pt-0">
+                      <span>{pt(`roastLevels.${level}`)}</span>
+                      <span className={`w-6 h-6 rounded-full shadow-inner ${
+                        level === 'light' ? 'bg-amber-300' : 
+                        level === 'medium' ? 'bg-amber-600' : 'bg-amber-900'
+                      }`} />
+                    </p>
+                  ))}
                 </div>
               </div>
 
               <div className="flex flex-col gap-4">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-extrabold text-amber-900 tracking-tighter">350฿</span>
-                  <span className="text-stone-500 font-medium">/ 500g</span>
-                  <span className="ml-2 text-green-700 text-[10px] font-black bg-green-100 px-2 py-0.5 rounded-full uppercase tracking-tighter border border-green-200">FREE SHIPPING</span>
-                </div>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold text-amber-900 tracking-tighter">599฿</span>
-                  <span className="text-stone-500 font-medium">/ 1kg</span>
-                  <span className="ml-2 text-amber-700 text-[10px] font-black bg-amber-100 px-2 py-0.5 rounded-full uppercase tracking-tighter border border-amber-200">WHOLESALE PRICE</span>
-                </div>
+                {mainProduct.packagingOptions.map((opt) => (
+                  <div key={opt.sku} className="flex items-baseline gap-2">
+                    <span className="text-3xl font-extrabold text-amber-900 tracking-tighter">{opt.priceTHB}฿</span>
+                    <span className="text-stone-500 font-medium">/ {opt.sizeGrams >= 1000 ? `${opt.sizeGrams / 1000}kg` : `${opt.sizeGrams}g`}</span>
+                    {opt.shippingIncluded && (
+                      <span className="ml-2 text-green-700 text-[10px] font-black bg-green-100 px-2 py-0.5 rounded-full uppercase tracking-tighter border border-green-200">FREE SHIPPING</span>
+                    )}
+                    {opt.targetMarket === 'wholesale' && (
+                      <span className="ml-2 text-amber-700 text-[10px] font-black bg-amber-100 px-2 py-0.5 rounded-full uppercase tracking-tighter border border-amber-200">WHOLESALE PRICE</span>
+                    )}
+                  </div>
+                ))}
               </div>
               
               <Link 
@@ -138,6 +157,7 @@ export default function HomePage() {
                 Order via LINE (jane4079)
               </Link>
             </div>
+
           </div>
         </div>
       </section>
