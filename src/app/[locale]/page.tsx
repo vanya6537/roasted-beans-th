@@ -4,7 +4,10 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
 import { HeroSection } from "@/components/ui/hero-section-2";
+import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { products } from "@/data/products";
+import { CheckCircle2, TrendingUp, Tag, Palette, Sparkles } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function HomePage() {
   const t = useTranslations("HomePage");

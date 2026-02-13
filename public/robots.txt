@@ -1,0 +1,29 @@
+# robots.txt for Roasted Beans Chiang Mai
+# Allow all crawlers to index the site
+
+User-agent: *
+Allow: /
+Disallow: /.next/
+Disallow: /api/
+Disallow: *?*sort=
+Disallow: *?*filter=
+
+# Specific instructions for Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+# Specific instructions for Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://roastedbeans.th/sitemap.xml

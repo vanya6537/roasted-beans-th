@@ -1,0 +1,47 @@
+{
+  "name": "Roasted Beans Chiang Mai - Premium Thai Arabica Coffee",
+  "short_name": "Roasted Beans TH",
+  "description": "Premium Grade A Thai Arabica coffee from Chiang Mai. Fresh roasted, direct from farm to your cup. Wholesale pricing available.",
+  "start_url": "/en",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#92400e",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/product-coffee.jpg",
+      "sizes": "1200x1500",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/product-coffee.jpg",
+      "sizes": "1200x1500",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ],
+  "categories": ["shopping", "food"],
+  "shortcuts": [
+    {
+      "name": "Order on LINE",
+      "short_name": "Order",
+      "description": "Order Thai Arabica coffee via LINE",
+      "url": "https://line.me/ti/p/~jane4079",
+      "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
