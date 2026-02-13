@@ -13,14 +13,11 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          <Link href="/" className="transition-colors hover:text-amber-700">
-            {t("home")}
-          </Link>
           <Link
             href="#products"
             className="transition-colors hover:text-amber-700"
           >
-            {t("shop")}
+            {t("ourCoffee")}
           </Link>
           <Link
             href="#wholesale"
@@ -33,6 +30,12 @@ export default function Navbar() {
             className="transition-colors hover:text-amber-700"
           >
             {t("about")}
+          </Link>
+          <Link
+            href="#contact"
+            className="transition-colors hover:text-amber-700"
+          >
+            {t("contact")}
           </Link>
           <LanguageSwitcher />
         </div>

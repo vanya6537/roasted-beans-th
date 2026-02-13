@@ -124,9 +124,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Product Section */}
+      {/* Products & Wholesale Section */}
       <section
-        id="wholesale"
+        id="products"
         className="relative overflow-hidden bg-gradient-to-br from-amber-950 via-stone-900 to-stone-950 py-24 text-white"
       >
         {/* Animated background elements */}
