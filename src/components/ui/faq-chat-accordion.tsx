@@ -53,17 +53,14 @@ export function FaqAccordion({
               <Accordion.Trigger className="flex w-full items-center justify-start gap-x-3">
                 <div
                   className={cn(
-                    "relative flex items-center space-x-3 rounded-xl p-3 transition-colors w-full",
-                    openItem === item.id.toString()
-                      ? "bg-amber-100 text-amber-900"
-                      : "bg-stone-100 hover:bg-amber-50",
+                    "relative flex items-center space-x-3 rounded-xl p-3 transition-colors w-full hover:cursor-pointer bg-stone-100 hover:bg-amber-50",
                     questionClassName
                   )}
                 >
                   {item.icon && (
                     <span
                       className={cn(
-                        "inline-block text-lg hover:cursor-pointer",
+                        "inline-block text-lg",
                         item.iconPosition === "right" ? "right-3" : "left-3"
                       )}
                       style={{

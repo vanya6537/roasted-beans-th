@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { NavBar } from "@/components/ui/tubelight-navbar";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { HeroSection } from "@/components/ui/hero-section-2";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
@@ -77,6 +78,11 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900 selection:bg-amber-200 pb-24 md:pb-0">
+      {/* Language Switcher - Top Right (Desktop) */}
+      <div className="hidden md:block fixed md:top-6 md:right-6 z-50">
+        <LanguageSwitcher variant="compact" />
+      </div>
+      
       <NavBar items={navItems} />
 
       {/* Hero Section - Integrated Component */}
@@ -158,6 +164,75 @@ export default function HomePage() {
             <p className="mx-auto max-w-3xl text-lg font-medium text-amber-100">
               {wt("perfectFor")}
             </p>
+          </AnimatedContainer>
+
+          {/* Product Options Display */}
+          <AnimatedContainer delay={0.15} className="mb-16 mx-auto max-w-4xl">
+            <div className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-900/30 to-stone-900/30 backdrop-blur-sm p-8">
+              <h3 className="text-2xl font-black text-amber-300 mb-6 text-center">
+                {mainProduct.name}
+              </h3>
+              
+              {/* Specs Grid */}
+              <div className="grid gap-4 md:grid-cols-2 mb-8">
+                <div className="rounded-lg bg-amber-900/40 p-4 border border-amber-700/20">
+                  <p className="text-amber-200/70 text-sm font-semibold mb-2">ORIGIN</p>
+                  <p className="text-white font-bold">{mainProduct.origin.country}</p>
+                  <p className="text-amber-100 text-sm">{mainProduct.origin.province} • {mainProduct.origin.district}</p>
+                  <p className="text-amber-200/60 text-xs mt-1">{mainProduct.origin.altitudeMeters.min}–{mainProduct.origin.altitudeMeters.max}m</p>
+                </div>
+                <div className="rounded-lg bg-amber-900/40 p-4 border border-amber-700/20">
+                  <p className="text-amber-200/70 text-sm font-semibold mb-2">VARIETY</p>
+                  <p className="text-white font-bold">{mainProduct.variety}</p>
+                  <p className="text-amber-100 text-sm">{mainProduct.grade} • {mainProduct.process}</p>
+                  <p className="text-amber-200/60 text-xs mt-1">Roast Date: {locale === 'th' ? '31/1/2026' : '2026-01-31'}</p>
+                </div>
+              </div>
+
+              {/* Taste Notes */}
+              <div className="mb-8">
+                <p className="text-amber-200/70 text-sm font-semibold mb-3">TASTE NOTES</p>
+                <div className="flex flex-wrap gap-2">
+                  {mainProduct.tasteNotes.map((note) => (
+                    <span key={note} className="inline-block px-4 py-2 rounded-full bg-amber-600/30 border border-amber-500/50 text-amber-100 text-sm font-medium">
+                      {note}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Roast Levels */}
+              <div className="mb-8">
+                <p className="text-amber-200/70 text-sm font-semibold mb-3">ROAST LEVELS</p>
+                <div className="flex flex-wrap gap-2">
+                  {mainProduct.roastLevelsAvailable.map((level) => (
+                    <span key={level} className="inline-block px-4 py-2 rounded-lg bg-amber-900/40 border border-amber-600/30 text-amber-50 text-sm font-medium capitalize">
+                      {level === 'light' ? (locale === 'th' ? 'อ่อน' : 'Light') : level === 'medium' ? (locale === 'th' ? 'กลาง' : 'Medium') : (locale === 'th' ? 'เข้ม' : 'Dark')}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pricing */}
+              <div>
+                <p className="text-amber-200/70 text-sm font-semibold mb-3">PRICING</p>
+                <div className="grid gap-3 md:grid-cols-2">
+                  {mainProduct.packagingOptions.map((option) => (
+                    <div key={option.sku} className="rounded-lg bg-amber-900/50 p-4 border border-amber-600/30">
+                      <div className="flex justify-between items-start mb-2">
+                        <p className="text-white font-bold">{option.sizeGrams}g</p>
+                        <p className="text-amber-300 font-bold text-lg">{option.priceTHB}฿</p>
+                      </div>
+                      <div className="text-amber-100/70 text-xs space-y-1">
+                        <p>{option.shippingIncluded ? '✓ Free Shipping' : 'Shipping TBD'}</p>
+                        <p>{option.vatIncluded ? '✓ VAT Included' : 'VAT Not Included'}</p>
+                        <p className="capitalize font-semibold text-amber-300 mt-2">{option.targetMarket}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </AnimatedContainer>
 
           {/* Feature Cards Section */}
@@ -285,27 +360,20 @@ export default function HomePage() {
                 },
               ]}
               className="w-full bg-stone-900/50 rounded-2xl p-6"
-              questionClassName="bg-amber-900/50 text-amber-50"
-              answerClassName="bg-amber-900/20 text-amber-50 border border-amber-700/30"
+              questionClassName="text-amber-50"
+              answerClassName="border-amber-100 bg-amber-50"
             />
           </AnimatedContainer>
 
-          {/* CTA */}
-          <AnimatedContainer delay={0.4} className="mt-16 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="inline-block rounded-3xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 px-10 py-6 text-center shadow-2xl shadow-amber-900/40 border border-amber-400/30"
+          {/* Simple LINE CTA */}
+          <AnimatedContainer delay={0.5} className="mt-16 text-center">
+            <Link
+              href="https://line.me/ti/p/~jane4079"
+              target="_blank"
+              className="inline-block rounded-2xl bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-lg font-black text-white shadow-lg shadow-green-600/30 transition-all hover:scale-105 active:scale-95"
             >
-              <p className="text-white font-bold text-lg">
-                Ready to start? Order your sample now via LINE
-              </p>
-              <p className="text-amber-100 text-sm mt-2">
-                jane4079 • 089-8556550 • K. เจน
-              </p>
-            </motion.div>
+              {locale === 'th' ? 'สั่งซื้อผ่าน LINE' : 'Order via LINE'}
+            </Link>
           </AnimatedContainer>
         </div>
       </section>
@@ -487,6 +555,9 @@ export default function HomePage() {
             delay={0.4}
             className="mt-20 border-t border-stone-200 pt-12 text-center"
           >
+            <div className="mb-6">
+              <LanguageSwitcher variant="full" />
+            </div>
             <p className="mb-4 text-sm text-stone-500">
               {locale === "th"
                 ? "ร่มเย็น คอฟฟี่ - กาแฟไทยคุณภาพจากหัวใจ"
