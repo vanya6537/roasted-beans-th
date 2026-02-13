@@ -212,7 +212,7 @@ export default function HomePage() {
                   <p className="text-amber-200/70 text-sm font-semibold mb-2">{pdt("labels.variety")}</p>
                   <p className="text-white font-bold">{mainProduct.variety}</p>
                   <p className="text-amber-100 text-sm">{mainProduct.grade} • {mainProduct.process}</p>
-                  <p className="text-amber-200/60 text-xs mt-1">{locale === 'th' ? 'วันที่คั่ว: 31/1/2026' : 'Roast Date: 2026-01-31'}</p>
+                  <p className="text-amber-200/60 text-xs mt-1">{pdt("roastDate")}</p>
                 </div>
               </div>
 
@@ -399,7 +399,7 @@ export default function HomePage() {
               target="_blank"
               className="inline-block px-8 py-3 text-lg font-bold text-green-500 border border-green-500 rounded-lg hover:bg-green-500 hover:text-white transition-all duration-300"
             >
-              {locale === 'th' ? 'สั่งซื้อผ่าน LINE' : 'Order via LINE'}
+              {t("cta.line")}
             </Link>
           </AnimatedContainer>
         </div>
@@ -497,7 +497,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <AnimatedContainer className="mb-16 text-center">
             <h2 className="mb-4 text-4xl font-black tracking-tight text-stone-900 md:text-5xl">
-              {locale === "th" ? "ติดต่อเราได้" : "Get in Touch"}
+              {ct("getInTouch")}
             </h2>
             <p className="mb-6 text-lg font-bold text-amber-700">
               {ct("brand")}
@@ -513,7 +513,7 @@ export default function HomePage() {
           >
             <div className="rounded-3xl border border-stone-200 bg-white p-10 shadow-lg">
               <h3 className="mb-6 text-2xl font-black text-amber-900">
-                {locale === "th" ? "ข้อมูลติดต่อ" : "Contact Information"}
+                {ct("information")}
               </h3>
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
@@ -527,7 +527,7 @@ export default function HomePage() {
                       {ct("phone")}
                     </Link>
                     <p className="text-sm text-stone-500">
-                      {locale === "th" ? "K. เจนกำลังรอ" : "K. Jen is waiting"}
+                      {ct("phoneWaiting")}
                     </p>
                   </div>
                 </div>
@@ -542,7 +542,7 @@ export default function HomePage() {
                       {ct("line")}
                     </Link>
                     <p className="text-sm text-stone-500">
-                      {locale === "th" ? "เร็วที่สุด" : "Fastest response"}
+                      {ct("lineFastest")}
                     </p>
                   </div>
                 </div>
@@ -551,7 +551,7 @@ export default function HomePage() {
                   <div>
                     <p className="font-bold text-stone-900">{ct("gmail")}</p>
                     <p className="text-sm text-stone-500">
-                      {locale === "th" ? "24 ชั่วโมง" : "24/7 support"}
+                      {ct("support24")}
                     </p>
                   </div>
                 </div>
@@ -560,7 +560,7 @@ export default function HomePage() {
                   <div>
                     <p className="font-bold text-stone-900">{ct("address")}</p>
                     <p className="text-sm text-stone-500">
-                      {locale === "th" ? "บ้านเราในเชียงใหม่" : "Our home in Chiang Mai"}
+                      {ct("homeNote")}
                     </p>
                   </div>
                 </div>
@@ -570,7 +570,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-amber-400 bg-amber-50 p-10 text-center">
               <div className="mb-4 text-5xl">☕</div>
               <h3 className="mb-3 text-2xl font-black text-amber-900">
-                {locale === "th" ? "ารสcoffee ดีที่สุด" : "Best Coffee Awaits"}
+                {nt("ui.bestCoffee")}
               </h3>
               <p className="mb-8 text-stone-600">
                 {locale === "th"
@@ -582,7 +582,7 @@ export default function HomePage() {
                 target="_blank"
                 className="inline-block px-8 py-3 text-lg font-bold text-green-500 border border-green-500 rounded-lg hover:bg-green-500 hover:text-white transition-all duration-300"
               >
-                {locale === "th" ? "เพิ่มเป็นเพื่อน" : "Add Friend on LINE"}
+                {nt("ui.addFriend")}
               </Link>
             </div>
           </AnimatedContainer>
@@ -606,15 +606,15 @@ export default function HomePage() {
       {/* Animated Footer with Wave Animation */}
       <AnimatedFooter
         leftLinks={[
-          { href: "#products", label: locale === 'th' ? "สินค้า" : "Products" },
-          { href: "#about", label: locale === 'th' ? "เกี่ยวกับเรา" : "About" },
+          { href: "#products", label: nt("nav.products") },
+          { href: "#about", label: nt("nav.about") },
         ]}
         rightLinks={[
           { href: "https://line.me/ti/p/~jane4079", label: "LINE" },
-          { href: `mailto:${ct("gmail")}`, label: locale === 'th' ? "อีเมล" : "Email" },
-          { href: "#contact", label: locale === 'th' ? "ติดต่อ" : "Contact" },
+          { href: `mailto:${ct("gmail")}`, label: nt("nav.email") },
+          { href: "#contact", label: nt("nav.contact") },
         ]}
-        copyrightText={`© ${new Date().getFullYear()} Roasted Beans TH. ${locale === 'th' ? 'กาแฟไทยคุณภาพจากหัวใจ' : 'Premium Thai Coffee with Heart'}`}
+        copyrightText={`© ${new Date().getFullYear()} Roasted Beans TH. ${nt("ui.premiumCoffee")}`}
         barCount={23}
       />
     </div>

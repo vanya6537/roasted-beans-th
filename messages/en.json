@@ -88,7 +88,8 @@
         "retail": "retail",
         "wholesale": "wholesale"
       }
-    }
+    },
+    "roastDate": "Roast Date: 2026-01-31"
   },
   "Common": {
     "nav": {
@@ -97,17 +98,31 @@
       "ourCoffee": "Our Coffee",
       "wholesale": "For Cafe & Resellers",
       "about": "About Us",
-      "contact": "Contact"
+      "contact": "Contact",
+      "products": "Products",
+      "email": "Email"
+    },
+    "ui": {
+      "bestCoffee": "Best Coffee Awaits",
+      "addFriend": "Add Friend on LINE",
+      "orderViaLine": "Order via LINE",
+      "premiumCoffee": "Premium Thai Coffee with Heart"
     }
   },
   "Contact": {
     "title": "Contact / Order via Line",
+    "getInTouch": "Get in Touch",
+    "information": "Contact Information",
     "brand": "Ruem Yen Coffee (ร่มเย็น คอฟฟี่)",
     "tagline": "Coffee & Agricultural Products Wholesale",
     "phone": "Tel: 089-8556550 K. เจน",
+    "phoneWaiting": "K. Jen is waiting",
     "line": "ID Line: jane4079",
+    "lineFastest": "Fastest response",
     "gmail": "Gmail: jane4079@gmail.com",
-    "address": "Address: Sankamphang, Chiang Mai"
+    "address": "Address: Sankamphang, Chiang Mai",
+    "support24": "24/7 support",
+    "homeNote": "Our home in Chiang Mai"
   },
   "Wholesale": {
     "title": "Wholesale Coffee – Stable Quality, Stable Profit",

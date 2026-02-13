@@ -88,7 +88,8 @@
         "retail": "ขายปลีก",
         "wholesale": "ขายส่ง"
       }
-    }
+    },
+    "roastDate": "วันที่คั่ว: 31/1/2026"
   },
   "Common": {
     "nav": {
@@ -97,17 +98,31 @@
       "ourCoffee": "กาแฟของเรา",
       "wholesale": "สำหรับร้านกาแฟและตัวแทน",
       "about": "เกี่ยวกับเรา",
-      "contact": "ติดต่อเรา"
+      "contact": "ติดต่อเรา",
+      "products": "สินค้า",
+      "email": "อีเมล"
+    },
+    "ui": {
+      "bestCoffee": "กาแฟที่ดีที่สุด",
+      "addFriend": "เพิ่มเป็นเพื่อน",
+      "orderViaLine": "สั่งซื้อผ่าน LINE",
+      "premiumCoffee": "กาแฟไทยคุณภาพจากหัวใจ"
     }
   },
   "Contact": {
     "title": "ติดต่อ / สั่งซื้อผ่าน Line",
+    "getInTouch": "ติดต่อเราได้",
+    "information": "ข้อมูลติดต่อ",
     "brand": "ร่มเย็น คอฟฟี่ (Ruem Yen Coffee)",
     "tagline": "ซื้อ-ขายกาแฟสารและสินค้าพืชผลทางการเกษตรทุกประเภท",
     "phone": "โทร: 089-8556550 K. เจน",
+    "phoneWaiting": "K. เจนกำลังรอ",
     "line": "ID Line: jane4079",
+    "lineFastest": "เร็วที่สุด",
     "gmail": "Gmail: jane4079@gmail.com",
-    "address": "ที่อยู่: สันกำแพง เชียงใหม่"
+    "address": "ที่อยู่: สันกำแพง เชียงใหม่",
+    "support24": "24 ชั่วโมง",
+    "homeNote": "บ้านเราในเชียงใหม่"
   },
   "Wholesale": {
     "title": "กาแฟราคาส่ง – คุณภาพนิ่ง กำไรมั่นคง",
