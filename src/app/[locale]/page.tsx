@@ -8,6 +8,7 @@ import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { HeroSection } from "@/components/ui/hero-section-2";
 import { FeatureCard } from "@/components/ui/grid-feature-cards";
 import { FaqAccordion } from "@/components/ui/faq-chat-accordion";
+import AnimatedFooter from "@/components/ui/animated-footer";
 import { products } from "@/data/products";
 import {
   CheckCircle2,
@@ -174,8 +175,28 @@ export default function HomePage() {
               <h3 className="text-2xl font-black text-amber-300 mb-6 text-center">
                 {mainProduct.name}
               </h3>
-              
-              {/* Specs Grid */}
+                <div className="mb-8 flex justify-center">
+                  <svg width="0" height="0">
+                    <defs>
+                      <clipPath id="coffeeBean" clipPathUnits="objectBoundingBox">
+                        <path d="M0.5 0 C0.75 0.15 0.95 0.3 0.98 0.5 C0.95 0.7 0.75 0.85 0.5 1 C0.25 0.85 0.05 0.7 0.02 0.5 C0.05 0.3 0.25 0.15 0.5 0" fill="white"/>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <Image
+                  src={"/product-coffee.png"}
+                  alt={mainProduct.name}
+                  width={670}
+                  height={1172}
+                  className="w-full max-w-[670px] h-auto max-h-[50vh] md:max-h-[60vh] object-cover rounded-full"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 670px"
+                  style={{
+                    clipPath: "polygon(50% 0%, 85% 10%, 95% 30%, 98% 50%, 95% 70%, 85% 90%, 50% 100%, 15% 90%, 5% 70%, 2% 50%, 5% 30%, 15% 10%)"
+                  }}
+                  />
+                </div>
+                {/* Specs Grid */}
               <div className="grid gap-4 md:grid-cols-2 mb-8">
                 <div className="rounded-lg bg-amber-900/40 p-4 border border-amber-700/20">
                   <p className="text-amber-200/70 text-sm font-semibold mb-2">{pdt("labels.origin")}</p>
@@ -372,7 +393,7 @@ export default function HomePage() {
             <Link
               href="https://line.me/ti/p/~jane4079"
               target="_blank"
-              className="inline-block rounded-2xl bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-lg font-black text-white shadow-lg shadow-green-600/30 transition-all hover:scale-105 active:scale-95"
+              className="inline-block px-8 py-3 text-lg font-bold text-green-500 border border-green-500 rounded-lg hover:bg-green-500 hover:text-white transition-all duration-300"
             >
               {locale === 'th' ? 'สั่งซื้อผ่าน LINE' : 'Order via LINE'}
             </Link>
@@ -464,8 +485,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Contact & Footer */}
-      <footer
+      {/* Contact Section */}
+      <section
         id="contact"
         className="border-t border-stone-200 bg-gradient-to-b from-stone-50 to-stone-100 py-24"
       >
@@ -555,7 +576,7 @@ export default function HomePage() {
               <Link
                 href="https://line.me/ti/p/~jane4079"
                 target="_blank"
-                className="inline-block rounded-2xl bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-lg font-black text-white shadow-lg shadow-green-600/30 transition-all hover:scale-105 hover:shadow-lg active:scale-95"
+                className="inline-block px-8 py-3 text-lg font-bold text-green-500 border border-green-500 rounded-lg hover:bg-green-500 hover:text-white transition-all duration-300"
               >
                 {locale === "th" ? "เพิ่มเป็นเพื่อน" : "Add Friend on LINE"}
               </Link>
@@ -574,12 +595,24 @@ export default function HomePage() {
                 ? "ร่มเย็น คอฟฟี่ - กาแฟไทยคุณภาพจากหัวใจ"
                 : "Roasted Beans - Premium Thai Coffee with Heart"}
             </p>
-            <p className="text-xs font-bold tracking-widest text-stone-300 uppercase">
-              © {new Date().getFullYear()} Roasted Beans TH.
-            </p>
           </AnimatedContainer>
         </div>
-      </footer>
+      </section>
+
+      {/* Animated Footer with Wave Animation */}
+      <AnimatedFooter
+        leftLinks={[
+          { href: "#products", label: locale === 'th' ? "สินค้า" : "Products" },
+          { href: "#about", label: locale === 'th' ? "เกี่ยวกับเรา" : "About" },
+        ]}
+        rightLinks={[
+          { href: "https://line.me/ti/p/~jane4079", label: "LINE" },
+          { href: `mailto:${ct("gmail")}`, label: locale === 'th' ? "อีเมล" : "Email" },
+          { href: "#contact", label: locale === 'th' ? "ติดต่อ" : "Contact" },
+        ]}
+        copyrightText={`© ${new Date().getFullYear()} Roasted Beans TH. ${locale === 'th' ? 'กาแฟไทยคุณภาพจากหัวใจ' : 'Premium Thai Coffee with Heart'}`}
+        barCount={23}
+      />
     </div>
   );
 }
