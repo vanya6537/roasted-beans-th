@@ -21,9 +21,75 @@ export function NavBar({ items, className }: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0]?.name ?? "")
 
   useEffect(() => {
-    // Component handles responsive through CSS classes
-    // This hook is kept for consistency and future use
-  }, [])
+    // Handle scroll detection for nav highlighting
+    const handleScroll = () => {
+      // Get the first products section (since hero has no ID)
+      const productsSection = document.getElementById("products")
+      
+      if (!productsSection) return
+
+      const productsTop = productsSection.getBoundingClientRect().top
+      
+      // If products section is below the viewport, we're in the hero/top area
+      if (productsTop > window.innerHeight * 0.33) {
+        const homeItem = items.find((item) => item.url === "#")
+        if (homeItem) {
+          setActiveTab(homeItem.name)
+        }
+        return
+      }
+    }
+
+    // Set up Intersection Observer to track which section is in view
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px 0px -66% 0px", // Trigger when section reaches top third of viewport
+      threshold: 0,
+    }
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement
+          const sectionId = target?.id || ""
+          
+          // Map section IDs to nav item URLs
+          let targetUrl = ""
+          if (sectionId === "products") {
+            targetUrl = "#products"
+          } else if (sectionId === "about") {
+            targetUrl = "#about"
+          } else if (sectionId === "contact") {
+            targetUrl = "#contact"
+          }
+
+          // Find matching nav item
+          const matchingItem = items.find((item) => item.url === targetUrl)
+          if (matchingItem) {
+            setActiveTab(matchingItem.name)
+          }
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    // Observe all sections with IDs
+    const sectionsToObserve = document.querySelectorAll(
+      "[id='products'], [id='about'], [id='contact']"
+    )
+    sectionsToObserve.forEach((section) => observer.observe(section))
+
+    // Add scroll listener to detect hero/top section
+    window.addEventListener("scroll", handleScroll)
+    // Call once on mount to set initial state
+    handleScroll()
+
+    return () => {
+      sectionsToObserve.forEach((section) => observer.unobserve(section))
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [items])
 
   return (
     <div

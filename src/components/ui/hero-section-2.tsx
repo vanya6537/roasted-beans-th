@@ -197,10 +197,12 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                   <span>{contactInfo.website}</span>
                 </div>
               )}
-              <div className="flex items-center">
+                <div className="flex items-center">
                 <InfoIcon type="phone" />
-                <span>{contactInfo.phone}</span>
-              </div>
+                <a href="https://line.me/ti/p/~jane4079" className="cursor-pointer hover:underline">
+                  <span>{contactInfo.phone}</span>
+                </a>
+                </div>
               <div className="flex items-center">
                 <InfoIcon type="address" />
                 <span>{contactInfo.address}</span>
